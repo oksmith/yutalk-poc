@@ -1,0 +1,19 @@
+{
+  "phrases": [
+    {
+      "chinese": "你好",
+      "pinyin": "nǐ hǎo",
+      "english": "hello"
+    },
+    {
+      "chinese": "谢谢",
+      "pinyin": "xiè xiè",
+      "english": "thank you"
+    },
+    {
+      "chinese": "我在学中文",
+      "pinyin": "wǒ zài xué zhōng wén",
+      "english": "I am learning Chinese"
+    }
+  ]
+}

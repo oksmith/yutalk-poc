@@ -2858,6 +2858,7 @@ dependencies = [
     { name = "pinyin" },
     { name = "pypinyin" },
     { name = "python-dotenv" },
+    { name = "pyyaml" },
     { name = "sounddevice" },
     { name = "soundfile" },
 ]
@@ -2877,6 +2878,7 @@ requires-dist = [
     { name = "pinyin", specifier = ">=0.4.0" },
     { name = "pypinyin", specifier = ">=0.55.0" },
     { name = "python-dotenv", specifier = ">=1.1.1" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "sounddevice", specifier = ">=0.5.3" },
     { name = "soundfile", specifier = ">=0.13.1" },
 ]

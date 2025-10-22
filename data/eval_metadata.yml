@@ -1,0 +1,550 @@
+test_cases:
+  # ===== PERFECT PRONUNCIATION (Baseline) =====
+  - filename: eval_ni_hao_perfect_001
+    expected_chinese: "你好"
+    expected_pinyin: "ni3 hao3"
+    pronunciation_target: "ni3 hao3"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Baseline - perfect greeting"
+    duration: 3
+
+  - filename: eval_xie_xie_perfect_001
+    expected_chinese: "谢谢"
+    expected_pinyin: "xie4 xie4"
+    pronunciation_target: "xie4 xie4"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Baseline - thank you"
+    duration: 3
+
+  - filename: eval_ma_ma_perfect_001
+    expected_chinese: "妈妈"
+    expected_pinyin: "ma1 ma1"
+    pronunciation_target: "ma1 ma1"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Baseline - mother (tone 1)"
+    duration: 3
+
+  - filename: eval_wo_ai_ni_perfect_001
+    expected_chinese: "我爱你"
+    expected_pinyin: "wo3 ai4 ni3"
+    pronunciation_target: "wo3 ai4 ni3"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Baseline - I love you"
+    duration: 3
+
+  - filename: eval_zhi_dao_perfect_001
+    expected_chinese: "知道"
+    expected_pinyin: "zhi1 dao4"
+    pronunciation_target: "zhi1 dao4"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Baseline - to know (zh- sound)"
+    duration: 3
+
+  # ===== TONE ERRORS =====
+  # Tone 1 ↔ Tone 2
+  - filename: eval_ma_tone_1to2_001
+    expected_chinese: "妈"
+    expected_pinyin: "ma1"
+    pronunciation_target: "ma2"
+    error_type: wrong_tone
+    severity: moderate
+    target_error: "Say tone 2 (rising) instead of tone 1 (flat)"
+    notes: "Testing ma1 → ma2 confusion"
+    duration: 3
+
+  # Tone 1 ↔ Tone 3
+  - filename: eval_ma_tone_1to3_001
+    expected_chinese: "妈妈"
+    expected_pinyin: "ma1 ma1"
+    pronunciation_target: "ma3 ma1"
+    error_type: wrong_tone
+    severity: moderate
+    target_error: "Say first syllable as tone 3 instead of tone 1"
+    notes: "Testing ma1 → ma3 (mother → horse)"
+    duration: 3
+
+  # Tone 1 ↔ Tone 4
+  - filename: eval_ma_tone_1to4_001
+    expected_chinese: "妈"
+    expected_pinyin: "ma1"
+    pronunciation_target: "ma4"
+    error_type: wrong_tone
+    severity: moderate
+    target_error: "Say tone 4 (falling) instead of tone 1"
+    notes: "Testing ma1 → ma4 (mother → scold)"
+    duration: 3
+
+  # Tone 3 ↔ Tone 4
+  - filename: eval_ni_tone_3to4_001
+    expected_chinese: "你好"
+    expected_pinyin: "ni3 hao3"
+    pronunciation_target: "ni4 hao3"
+    error_type: wrong_tone
+    severity: moderate
+    target_error: "Say first syllable as tone 4 instead of tone 3"
+    notes: "Testing ni3 → ni4"
+    duration: 3
+
+  # Tone 2 ↔ Tone 3
+  - filename: eval_tone_2to3_001
+    expected_chinese: "明天"
+    expected_pinyin: "ming2 tian1"
+    pronunciation_target: "ming3 tian1"
+    error_type: wrong_tone
+    severity: moderate
+    target_error: "Say first syllable as tone 3 instead of tone 2"
+    notes: "Testing tone 2 → tone 3 confusion"
+    duration: 3
+
+  # Multiple tone errors
+  - filename: eval_ni_hao_all_wrong_tones_001
+    expected_chinese: "你好"
+    expected_pinyin: "ni3 hao3"
+    pronunciation_target: "ni1 hao1"
+    error_type: multiple_errors
+    severity: severe
+    target_error: "Say both syllables as tone 1"
+    notes: "Both tones wrong"
+    duration: 3
+
+  # ===== INITIAL CONSONANT ERRORS =====
+  # n ↔ l
+  - filename: eval_ni_initial_nto_001
+    expected_chinese: "你好"
+    expected_pinyin: "ni3 hao3"
+    pronunciation_target: "li3 hao3"
+    error_type: wrong_initial
+    severity: moderate
+    target_error: "Say 'li3' instead of 'ni3'"
+    notes: "Testing n/l confusion (common for Japanese/Korean speakers)"
+    duration: 3
+
+  - filename: eval_nian_initial_ntol_001
+    expected_chinese: "年"
+    expected_pinyin: "nian2"
+    pronunciation_target: "lian2"
+    error_type: wrong_initial
+    severity: moderate
+    target_error: "Say 'lian2' instead of 'nian2'"
+    notes: "Testing n/l with complex final"
+    duration: 3
+
+  # zh ↔ ch ↔ sh (retroflex confusions)
+  - filename: eval_zhi_initial_zhtoch_001
+    expected_chinese: "知道"
+    expected_pinyin: "zhi1 dao4"
+    pronunciation_target: "chi1 dao4"
+    error_type: wrong_initial
+    severity: moderate
+    target_error: "Say 'chi1' instead of 'zhi1'"
+    notes: "Testing zh/ch confusion"
+    duration: 3
+
+  - filename: eval_chi_initial_chtosh_001
+    expected_chinese: "吃饭"
+    expected_pinyin: "chi1 fan4"
+    pronunciation_target: "shi1 fan4"
+    error_type: wrong_initial
+    severity: moderate
+    target_error: "Say 'shi1' instead of 'chi1'"
+    notes: "Testing ch/sh confusion"
+    duration: 3
+
+  # z ↔ c ↔ s (dental sibilants)
+  - filename: eval_zi_initial_ztoc_001
+    expected_chinese: "字"
+    expected_pinyin: "zi4"
+    pronunciation_target: "ci4"
+    error_type: wrong_initial
+    severity: moderate
+    target_error: "Say 'ci4' instead of 'zi4'"
+    notes: "Testing z/c confusion"
+    duration: 3
+
+  - filename: eval_si_initial_stoz_001
+    expected_chinese: "四"
+    expected_pinyin: "si4"
+    pronunciation_target: "zi4"
+    error_type: wrong_initial
+    severity: moderate
+    target_error: "Say 'zi4' instead of 'si4'"
+    notes: "Testing s/z confusion"
+    duration: 3
+
+  # j ↔ q ↔ x (palatal confusions)
+  - filename: eval_ji_initial_jtoq_001
+    expected_chinese: "鸡"
+    expected_pinyin: "ji1"
+    pronunciation_target: "qi1"
+    error_type: wrong_initial
+    severity: moderate
+    target_error: "Say 'qi1' instead of 'ji1'"
+    notes: "Testing j/q confusion"
+    duration: 3
+
+  - filename: eval_xi_initial_xtoj_001
+    expected_chinese: "西"
+    expected_pinyin: "xi1"
+    pronunciation_target: "ji1"
+    error_type: wrong_initial
+    severity: moderate
+    target_error: "Say 'ji1' instead of 'xi1'"
+    notes: "Testing x/j confusion"
+    duration: 3
+
+  # b ↔ p (aspiration)
+  - filename: eval_ba_initial_btop_001
+    expected_chinese: "八"
+    expected_pinyin: "ba1"
+    pronunciation_target: "pa1"
+    error_type: wrong_initial
+    severity: moderate
+    target_error: "Say 'pa1' instead of 'ba1'"
+    notes: "Testing b/p confusion (aspiration)"
+    duration: 3
+
+  # d ↔ t (aspiration)
+  - filename: eval_da_initial_dtot_001
+    expected_chinese: "大"
+    expected_pinyin: "da4"
+    pronunciation_target: "ta4"
+    error_type: wrong_initial
+    severity: moderate
+    target_error: "Say 'ta4' instead of 'da4'"
+    notes: "Testing d/t confusion"
+    duration: 3
+
+  # g ↔ k (aspiration)
+  - filename: eval_guo_initial_gtok_001
+    expected_chinese: "国"
+    expected_pinyin: "guo2"
+    pronunciation_target: "kuo2"
+    error_type: wrong_initial
+    severity: moderate
+    target_error: "Say 'kuo2' instead of 'guo2'"
+    notes: "Testing g/k confusion"
+    duration: 3
+
+  # ===== FINAL/VOWEL ERRORS =====
+  # an ↔ ang
+  - filename: eval_han_final_antoang_001
+    expected_chinese: "汉"
+    expected_pinyin: "han4"
+    pronunciation_target: "hang4"
+    error_type: wrong_final
+    severity: moderate
+    target_error: "Say 'hang4' (with ng) instead of 'han4'"
+    notes: "Testing an/ang confusion"
+    duration: 3
+
+  - filename: eval_xian_final_antoan_001
+    expected_chinese: "想"
+    expected_pinyin: "xiang3"
+    pronunciation_target: "xian3"
+    error_type: wrong_final
+    severity: moderate
+    target_error: "Say 'xian3' (without ng) instead of 'xiang3'"
+    notes: "Testing ang/an confusion (reverse)"
+    duration: 3
+
+  # en ↔ eng
+  - filename: eval_ren_final_entoeng_001
+    expected_chinese: "人"
+    expected_pinyin: "ren2"
+    pronunciation_target: "reng2"
+    error_type: wrong_final
+    severity: moderate
+    target_error: "Say 'reng2' instead of 'ren2'"
+    notes: "Testing en/eng confusion"
+    duration: 3
+
+  # in ↔ ing
+  - filename: eval_xin_final_intoing_001
+    expected_chinese: "心"
+    expected_pinyin: "xin1"
+    pronunciation_target: "xing1"
+    error_type: wrong_final
+    severity: moderate
+    target_error: "Say 'xing1' instead of 'xin1'"
+    notes: "Testing in/ing confusion"
+    duration: 3
+
+  # e ↔ o
+  - filename: eval_he_final_etoo_001
+    expected_chinese: "和"
+    expected_pinyin: "he2"
+    pronunciation_target: "ho2"
+    error_type: wrong_final
+    severity: moderate
+    target_error: "Say 'ho2' instead of 'he2'"
+    notes: "Testing e/o confusion"
+    duration: 3
+
+  # u ↔ ü
+  - filename: eval_lu_final_utou_001
+    expected_chinese: "绿"
+    expected_pinyin: "lü4"
+    pronunciation_target: "lu4"
+    error_type: wrong_final
+    severity: moderate
+    target_error: "Say 'lu4' (without umlaut) instead of 'lü4'"
+    notes: "Testing ü/u confusion (common English speaker error)"
+    duration: 3
+
+  - filename: eval_lu_final_utou_002
+    expected_chinese: "驴"
+    expected_pinyin: "lü2"
+    pronunciation_target: "lu2"
+    error_type: wrong_final
+    severity: moderate
+    target_error: "Say 'lu2' (without umlaut) instead of 'lü2'"
+    notes: "Testing ü/u confusion"
+    duration: 3
+
+  # ===== MULTIPLE SIMULTANEOUS ERRORS =====
+  - filename: eval_multi_error_001
+    expected_chinese: "你好"
+    expected_pinyin: "ni3 hao3"
+    pronunciation_target: "li1 hao1"
+    error_type: multiple_errors
+    severity: severe
+    target_error: "Wrong initial (n→l) AND wrong tones (3→1 both syllables)"
+    notes: "Three errors: initial + two tones"
+    duration: 3
+
+  - filename: eval_multi_error_002
+    expected_chinese: "知道"
+    expected_pinyin: "zhi1 dao4"
+    pronunciation_target: "chi4 tao2"
+    error_type: multiple_errors
+    severity: severe
+    target_error: "Wrong initial (zh→ch), wrong tones, wrong final (d→t)"
+    notes: "Multiple component errors"
+    duration: 3
+
+  - filename: eval_multi_error_003
+    expected_chinese: "中国"
+    expected_pinyin: "zhong1 guo2"
+    pronunciation_target: "chong4 kuo3"
+    error_type: multiple_errors
+    severity: severe
+    target_error: "All components wrong"
+    notes: "Maximum confusion"
+    duration: 3
+
+  # ===== LONGER PHRASES =====
+  - filename: eval_long_perfect_001
+    expected_chinese: "我在学中文"
+    expected_pinyin: "wo3 zai4 xue2 zhong1 wen2"
+    pronunciation_target: "wo3 zai4 xue2 zhong1 wen2"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Longer phrase - perfect"
+    duration: 5
+
+  - filename: eval_long_tone_error_001
+    expected_chinese: "我在学中文"
+    expected_pinyin: "wo3 zai4 xue2 zhong1 wen2"
+    pronunciation_target: "wo1 zai4 xue2 zhong1 wen2"
+    error_type: wrong_tone
+    severity: slight
+    target_error: "First syllable tone 1 instead of 3"
+    notes: "Longer phrase - subtle tone error"
+    duration: 5
+
+  - filename: eval_long_perfect_002
+    expected_chinese: "今天天气很好"
+    expected_pinyin: "jin1 tian1 tian1 qi4 hen3 hao3"
+    pronunciation_target: "jin1 tian1 tian1 qi4 hen3 hao3"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Weather phrase - perfect"
+    duration: 5
+
+  - filename: eval_long_tone_error_002
+    expected_chinese: "今天天气很好"
+    expected_pinyin: "jin1 tian1 tian1 qi4 hen3 hao3"
+    pronunciation_target: "jin1 tian1 tian1 qi1 hen3 hao3"
+    error_type: wrong_tone
+    severity: moderate
+    target_error: "Fourth character tone 1 instead of 4"
+    notes: "Weather phrase - tone error on qi"
+    duration: 5
+
+  # ===== VERY POOR PRONUNCIATION (Romanization Tests) =====
+  - filename: eval_unclear_001
+    expected_chinese: "你好"
+    expected_pinyin: "ni3 hao3"
+    pronunciation_target: "nee how (like English)"
+    error_type: unclear
+    severity: severe
+    target_error: "Pronounce with heavy English accent, no tones"
+    notes: "Testing Whisper romanization fallback"
+    duration: 3
+
+  - filename: eval_unclear_002
+    expected_chinese: "谢谢"
+    expected_pinyin: "xie4 xie4"
+    pronunciation_target: "shay shay (like English)"
+    error_type: unclear
+    severity: severe
+    target_error: "Pronounce with heavy English accent"
+    notes: "Testing romanization on different phrase"
+    duration: 3
+
+  - filename: eval_unclear_003
+    expected_chinese: "中国"
+    expected_pinyin: "zhong1 guo2"
+    pronunciation_target: "jong gwoh (like English)"
+    error_type: unclear
+    severity: severe
+    target_error: "Very poor anglicized pronunciation"
+    notes: "Testing system behavior with very poor input"
+    duration: 3
+
+  # ===== CONTEXTUALLY RARE WORDS =====
+  - filename: eval_rare_word_001
+    expected_chinese: "骂"
+    expected_pinyin: "ma4"
+    pronunciation_target: "ma4"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Testing rare word in isolation (language model bias test)"
+    duration: 3
+
+  - filename: eval_rare_word_002
+    expected_chinese: "骂人"
+    expected_pinyin: "ma4 ren2"
+    pronunciation_target: "ma4 ren2"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Testing rare word in context"
+    duration: 3
+
+  # ===== SIMILAR SOUNDS (Minimal Pairs) =====
+  - filename: eval_minimal_pair_zhi_chi_001
+    expected_chinese: "知"
+    expected_pinyin: "zhi1"
+    pronunciation_target: "zhi1"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Minimal pair baseline - zhi"
+    duration: 3
+
+  - filename: eval_minimal_pair_zhi_chi_002
+    expected_chinese: "吃"
+    expected_pinyin: "chi1"
+    pronunciation_target: "chi1"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Minimal pair baseline - chi"
+    duration: 3
+
+  - filename: eval_minimal_pair_shi_001
+    expected_chinese: "是"
+    expected_pinyin: "shi4"
+    pronunciation_target: "shi4"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Minimal pair baseline - shi"
+    duration: 3
+
+  # ===== NEUTRAL TONE =====
+  - filename: eval_neutral_tone_001
+    expected_chinese: "妈妈"
+    expected_pinyin: "ma1 ma5"
+    pronunciation_target: "ma1 ma5"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Testing neutral tone (second ma)"
+    duration: 3
+
+  - filename: eval_neutral_tone_wrong_001
+    expected_chinese: "妈妈"
+    expected_pinyin: "ma1 ma5"
+    pronunciation_target: "ma1 ma1"
+    error_type: wrong_tone
+    severity: slight
+    target_error: "Pronounce second syllable with tone 1 instead of neutral"
+    notes: "Testing neutral tone vs tone 1"
+    duration: 3
+
+  # ===== TONE SANDHI =====
+  - filename: eval_tone_sandhi_001
+    expected_chinese: "你好"
+    expected_pinyin: "ni3 hao3"
+    pronunciation_target: "ni2 hao3"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "With tone sandhi: ni3→ni2 before another 3rd tone (natural speech)"
+    duration: 3
+
+  - filename: eval_tone_sandhi_002
+    expected_chinese: "不对"
+    expected_pinyin: "bu4 dui4"
+    pronunciation_target: "bu2 dui4"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "不 (bu4) changes to bú (bu2) before a 4th tone"
+    duration: 3
+
+  - filename: eval_tone_sandhi_003
+    expected_chinese: "一次"
+    expected_pinyin: "yi1 ci4"
+    pronunciation_target: "yi2 ci4"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "一 (yi1) changes to yí (yi2) before a 4th tone"
+    duration: 3
+
+  # ===== ADDITIONAL COVERAGE =====
+  - filename: eval_yi_perfect_001
+    expected_chinese: "一"
+    expected_pinyin: "yi1"
+    pronunciation_target: "yi1"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Number one - baseline"
+    duration: 3
+
+  - filename: eval_bu_perfect_001
+    expected_chinese: "不"
+    expected_pinyin: "bu4"
+    pronunciation_target: "bu4"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "Negation - baseline"
+    duration: 3
+
+  - filename: eval_wo_perfect_001
+    expected_chinese: "我"
+    expected_pinyin: "wo3"
+    pronunciation_target: "wo3"
+    error_type: correct
+    severity: null
+    target_error: null
+    notes: "I/me - baseline single character"
+    duration: 3

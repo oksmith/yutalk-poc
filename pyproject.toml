@@ -18,6 +18,7 @@ dependencies = [
     "pinyin>=0.4.0",
     "pypinyin>=0.55.0",
     "python-dotenv>=1.1.1",
+    "pyyaml>=6.0.3",
     "sounddevice>=0.5.3",
     "soundfile>=0.13.1",
 ]

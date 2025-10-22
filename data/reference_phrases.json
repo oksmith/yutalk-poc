@@ -3,17 +3,67 @@
     {
       "chinese": "你好",
       "pinyin": "nǐ hǎo",
-      "english": "hello"
+      "english": "hello",
+      "filename": "ni_hao"
+    },
+    {
+      "chinese": "你好",
+      "pinyin": "nǐ hǎo (incorrect tones)",
+      "english": "hello (mispronounced)",
+      "filename": "ni_hao_incorrect",
+      "notes": "Intentionally incorrect pronunciation for testing"
     },
     {
       "chinese": "谢谢",
       "pinyin": "xiè xiè",
-      "english": "thank you"
+      "english": "thank you",
+      "filename": "xie_xie"
+    },
+    {
+      "chinese": "妈妈",
+      "pinyin": "mā ma",
+      "english": "mother",
+      "filename": "ma_ma"
+    },
+    {
+      "chinese": "马",
+      "pinyin": "mǎ",
+      "english": "horse",
+      "filename": "ma_horse",
+      "notes": "Third tone - testing tone differentiation"
+    },
+    {
+      "chinese": "骂",
+      "pinyin": "mà",
+      "english": "scold",
+      "filename": "ma_scold",
+      "notes": "Fourth tone - testing tone differentiation"
     },
     {
       "chinese": "我在学中文",
       "pinyin": "wǒ zài xué zhōng wén",
-      "english": "I am learning Chinese"
+      "english": "I am learning Chinese",
+      "filename": "wo_zai_xue_zhong_wen"
+    },
+    {
+      "chinese": "今天天气很好",
+      "pinyin": "jīn tiān tiān qì hěn hǎo",
+      "english": "The weather is nice today",
+      "filename": "jin_tian_tian_qi_hen_hao"
+    },
+    {
+      "chinese": "知道",
+      "pinyin": "zhī dào",
+      "english": "to know",
+      "filename": "zhi_dao",
+      "notes": "Testing zh- sound"
+    },
+    {
+      "chinese": "吃饭",
+      "pinyin": "chī fàn",
+      "english": "eat food/have a meal",
+      "filename": "chi_fan",
+      "notes": "Testing ch- sound"
     }
   ]
 }

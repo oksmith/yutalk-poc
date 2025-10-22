@@ -3,4 +3,7 @@ __pycache__/
 *.pyc
 .env
 data/sample_audio/*.wav
+data/eval_audio/*.wav
 data/*.csv
+data/eval_transcriptions_cache.json
+results/*.csv

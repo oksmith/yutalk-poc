@@ -33,6 +33,7 @@ from dotenv import load_dotenv
 from .transcription import (
     transcribe_whisper,
     convert_traditional_to_simplified,
+    remove_punctuation,
     is_romanization,
     calculate_api_cost,
     get_openai_client
@@ -164,15 +165,18 @@ def run_single_evaluation(
 
     processing_time = time.time() - start_time
 
-    # Extract transcription
+    # Extract transcription and normalize
     actual_chinese = transcription_result['text']
     actual_chinese = convert_traditional_to_simplified(actual_chinese)
+    actual_chinese = remove_punctuation(actual_chinese)
 
     # Check if romanization
     is_roman = is_romanization(actual_chinese)
 
     # Run pronunciation assessment
+    # Also normalize expected text to remove any punctuation
     expected_chinese = test_case['expected_chinese']
+    expected_chinese = remove_punctuation(expected_chinese)
 
     if is_roman:
         # Can't assess romanization properly

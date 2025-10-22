@@ -8,6 +8,7 @@ This module provides functions for:
 """
 
 import os
+import re
 from pathlib import Path
 from typing import Dict, List, Optional
 from openai import OpenAI
@@ -138,6 +139,33 @@ def convert_traditional_to_simplified(text: str) -> str:
     """
     cc = OpenCC('t2s')  # t2s = traditional to simplified
     return cc.convert(text)
+
+
+def remove_punctuation(text: str) -> str:
+    """
+    Remove all punctuation from text.
+
+    Whisper sometimes adds punctuation (periods, commas, etc.) which interferes
+    with pronunciation assessment. This function removes both Chinese and English
+    punctuation marks.
+
+    Args:
+        text: Text that may contain punctuation
+
+    Returns:
+        Text with all punctuation removed
+
+    Examples:
+        >>> remove_punctuation("不对。")
+        "不对"
+        >>> remove_punctuation("你好，世界！")
+        "你好世界"
+    """
+    # Remove common Chinese and English punctuation
+    # Chinese: 。，、；：？！""''《》〈〉【】〔〕（）
+    # English: . , ; : ? ! " ' ( ) [ ] { }
+    punctuation_pattern = r'[。，、；：？！""''《》〈〉【】〔〕（）\.\,\;\:\?\!\"\'\(\)\[\]\{\}\s]+'
+    return re.sub(punctuation_pattern, '', text)
 
 
 def is_romanization(text: str) -> bool:

@@ -7,11 +7,12 @@ This module provides functions to generate:
 - Failure analysis and recommendations
 """
 
-from pathlib import Path
-from typing import List, Dict, Optional
-from datetime import datetime
-import pandas as pd
 from collections import defaultdict
+from datetime import datetime
+from pathlib import Path
+from typing import Dict, List, Optional
+
+import pandas as pd
 
 
 def generate_console_report(results: List[Dict], total_duration: float, total_cost: float) -> str:

@@ -60,6 +60,12 @@ def generate_console_report(results: List[Dict], total_duration: float, total_co
         report.append(f"Average processing time per file: {total_duration/total_cases:.2f}s")
     report.append("")
 
+    # Early return if no test cases
+    if total_cases == 0:
+        report.append("No test cases to report.")
+        report.append("=" * 80)
+        return "\n".join(report)
+
     # Overall accuracy
     report.append("--- Overall Performance ---")
     report.append(f"Average Score: {df['score'].mean():.1f}%")
@@ -166,6 +172,31 @@ def generate_console_report(results: List[Dict], total_duration: float, total_co
         report.append(f"• High romanization rate ({romanization_count} cases)")
         report.append(f"  → Consider implementing fuzzy matching for romanized output")
 
+    report.append("")
+    report.append("=" * 80)
+
+    # Calculate overall detection accuracy
+    # Correct classification means:
+    # - For error_type != 'correct': overall_match should be False (error detected)
+    # - For error_type == 'correct': overall_match should be True (no error flagged)
+    correct_classifications = 0
+    for _, row in df.iterrows():
+        if row['error_type'] == 'correct':
+            # Should NOT flag an error (overall_match should be True)
+            if row['overall_match'] == True:
+                correct_classifications += 1
+        else:
+            # Should flag an error (overall_match should be False)
+            if row['overall_match'] == False:
+                correct_classifications += 1
+
+    overall_accuracy = (correct_classifications / total_cases * 100) if total_cases > 0 else 0
+
+    # Print in green and bold using ANSI color codes
+    GREEN_BOLD = '\033[1;92m'
+    RESET = '\033[0m'
+    report.append(f"\n{GREEN_BOLD}Overall Eval Score: {overall_accuracy:.1f}%{RESET}")
+    report.append(f"{GREEN_BOLD}(Mispronunciation detection accuracy){RESET}")
     report.append("")
     report.append("=" * 80)
 
